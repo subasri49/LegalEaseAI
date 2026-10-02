@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LegalEase - AI Legal Document Generator</title>
+  <link rel="icon" href="Image/Logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside id="sidebar">
+    <h3>📚 Document history</h3>
+    <div id="history"><p class="muted">No documents yet.</p></div>
+  </aside>
+
+  <main>
+    <img src="Image/inverseLogo.png" alt="LegalEase" class="logo">
+    <h2>AI Legal Document Generator</h2>
+
+    <details id="settings">
+      <summary>🔑 Gemini API key (stored only in this browser)</summary>
+      <input id="apiKey" type="password" placeholder="Paste key from aistudio.google.com/apikey" autocomplete="off">
+      <input id="models" type="text" value="gemini-2.5-flash,gemini-2.0-flash" title="Comma-separated, tried in order">
+      <p class="muted">Static site = no server to hide a key. Use your own key; never commit it to GitHub.</p>
+    </details>
+
+    <label>Document Type (Ex: Agreement, Contract, NDA)<input id="docType"></label>
+    <label>Parties Involved<textarea id="parties" rows="3"></textarea></label>
+    <label>Terms &amp; Conditions (Use semicolons for bullet points)<textarea id="terms" rows="4"></textarea></label>
+    <label>Effective Date<input id="dates"></label>
+    <button id="generate" class="primary">Generate Document</button>
+
+    <div id="msg"></div>
+    <section id="result" hidden>
+      <div id="preview"></div>
+      <button id="editBtn">✏️ Click to Edit Document</button>
+      <div id="editBox" hidden>
+        <textarea id="editor" rows="14"></textarea>
+        <button id="saveBtn">💾 Save edits to history</button>
+      </div>
+      <div class="downloads">
+        <button id="dlTxt">📄 Download as .TXT</button>
+        <button id="dlDocx">📝 Download as .DOCX</button>
+        <button id="dlPdf">📕 Download as .PDF</button>
+      </div>
+      <p class="muted">AI-generated drafts are not legal advice. Have a qualified lawyer review before signing.</p>
+    </section>
+  </main>
+
+  <script src="vendor/docx.min.js"></script>
+  <script src="vendor/jspdf.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
